@@ -7,7 +7,7 @@ $user_key = $_GET['user_key'] ?? $input['user_key'] ?? '';
 
 $servername = "localhost"; // 配置你的数据库
 $username = "bookmark_user";
-$password = "2rYdzYMezWP75rLn";
+$password = "yourpassword";
 $dbname = "bookmark_db";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
