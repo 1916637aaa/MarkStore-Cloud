@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarkStore Cloud</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">MarkStore Cloud</div>
+        <div class="actions">
+            <button id="addBookmarkBtn">添加书签</button>
+            <div class="dropdown">
+                <button>导入/导出</button>
+                <div class="dropdown-content">
+                    <a id="importBtn">导入</a>
+                    <a id="exportHtmlBtn">导出 HTML</a>
+                    <a id="exportJsonBtn">导出 JSON</a>
+                </div>
+            </div>
+            <button id="syncBtn">同步</button>
+            <button id="settingsBtn">设置</button>
+        </div>
+    </header>
+    <div class="container">
+        <aside class="categories">
+            <h3>分类</h3>
+            <ul id="categoryList">
+                <li data-id="all" class="active">全部书签</li>
+                <li data-id="uncategorized">未分类</li>
+            </ul>
+            <button id="newCategoryBtn">新建分类</button>
+        </aside>
+        <main class="bookmarks">
+            <input type="text" id="searchInput" placeholder="搜索书签...">
+            <div id="bookmarkList"></div>
+        </main>
+        <aside class="stats">
+            <h3>统计</h3>
+            <p>书签总数: <span id="totalBookmarks">0</span></p>
+            <p>分类数: <span id="totalCategories">0</span></p>
+            <p>最近同步: <span id="lastSync">未同步</span></p>
+        </aside>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <input type="file" id="importFile" style="display:none;">
+
+    <script src="script.js"></script>
+</body>
+</html>
