@@ -24,3 +24,37 @@
 欢迎 Star ⭐ 与贡献！
 
 GitHub: https://github.com/1916637aaa/markstore-cloud
+
+-------------------分    割    线----------------------
+
+### 部署教程(宝塔面板)
+1.下载源码并上传到网站根目录
+2.创建数据库(数据库名:bookmark_db;用户名:bookmark_user)
+3.打开phpmyadmin,点击上方菜单栏sql
+  输入print("-- 创建分类表（categories）
+CREATE TABLE IF NOT EXISTS `categories` (
+    `id` VARCHAR(255) NOT NULL PRIMARY KEY,
+    `user_key` VARCHAR(255) NOT NULL,
+    `name` VARCHAR(255) NOT NULL,
+    INDEX `idx_user_key` (`user_key`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- 创建书签表（bookmarks）
+CREATE TABLE IF NOT EXISTS `bookmarks` (
+    `id` VARCHAR(255) NOT NULL PRIMARY KEY,
+    `user_key` VARCHAR(255) NOT NULL,
+    `title` VARCHAR(255) NOT NULL,
+    `url` TEXT NOT NULL,
+    `category_id` VARCHAR(255) DEFAULT NULL,
+    `tags` TEXT DEFAULT NULL,              -- 存储逗号分隔的标签，例如：学习,PHP,工具
+    `add_time` BIGINT NOT NULL,            -- 添加时间戳（毫秒）
+    `visit_count` INT DEFAULT 0,           -- 访问次数
+    `favicon` TEXT DEFAULT NULL,           -- favicon 图片 URL
+    INDEX `idx_user_key` (`user_key`),
+    INDEX `idx_category` (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;")
+执行完成后，你会在左侧看到新创建的两张表：
+**categories**
+**bookmarks**
+
+### 此时数据库准备完毕，直接打开你的 MarkStore Cloud 主页（index.html），添加书签并点击“上传云端”即可正常使用云同步功能
